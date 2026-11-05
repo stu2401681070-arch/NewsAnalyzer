@@ -1,0 +1,25 @@
+@using IntelligentNewsAnalyzer.Services
+@model IntelligentNewsAnalyzer.Models.ArticleAnalysis
+@{
+    ViewData["Title"] = "Резултат от анализ";
+}
+
+<article class="panel result-panel">
+    <p class="eyebrow">@DisplayText.Engine(Model.Engine)</p>
+    <h1>@Model.Title</h1>
+    <div class="meta-row mb-3">
+        <span class="pill">@NewsCategories.Label(Model.Category)</span>
+        <span class="pill">@DisplayText.Sentiment(Model.Sentiment)</span>
+        <span>@Model.CreatedAt.ToLocalTime().ToString("dd.MM.yyyy HH:mm")</span>
+    </div>
+    <h2>Резюме</h2>
+    <p class="lead">@Model.Summary</p>
+    <h2>Теми</h2>
+    <p>@(string.IsNullOrWhiteSpace(Model.Topics) ? "Няма извлечени теми." : Model.Topics)</p>
+    <h2>Изходен текст</h2>
+    <p>@Model.OriginalText</p>
+    @if (Model.ArticleId is int articleId)
+    {
+        <a class="btn btn-ghost" asp-controller="News" asp-action="Details" asp-route-id="@articleId">Към новината</a>
+    }
+</article>

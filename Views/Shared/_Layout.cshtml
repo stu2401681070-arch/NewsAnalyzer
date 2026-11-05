@@ -1,0 +1,55 @@
+﻿@using IntelligentNewsAnalyzer.Services
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] · Интелигентен новинарски анализатор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,600;7..72,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="brand" asp-controller="Home" asp-action="Index">
+                    <span class="brand-mark">IN</span>
+                    <span>
+                        <strong>News Analyzer</strong>
+                        <small>Интелигентен новинарски анализ</small>
+                    </span>
+                </a>
+                <button class="nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Меню">
+                    ☰
+                </button>
+                <nav id="mainNav" class="collapse navbar-collapse site-nav">
+                    <a asp-controller="Home" asp-action="Index">Начало</a>
+                    <a asp-controller="News" asp-action="Index">Новини</a>
+                    <a asp-controller="Analysis" asp-action="Index">Анализ</a>
+                    <a asp-controller="Statistics" asp-action="Index">Статистика</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="site-main">
+            <div class="container py-4 py-lg-5">
+                @RenderBody()
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container d-flex flex-wrap justify-content-between gap-2">
+                <span>ASP.NET Core MVC · Entity Framework Core · SQLite · HttpClient · ИИ</span>
+                <span>Курсов проект · 2026</span>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
